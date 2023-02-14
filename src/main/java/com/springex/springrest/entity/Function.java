@@ -18,26 +18,45 @@ import java.util.HashMap;
 public class Function {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
-    Integer a,b,c;
+    Integer id;
+    String name;
+    Integer a;
+    Integer b;
+    Integer c;
+    public Function(String name,Integer a,Integer b,Integer c){
+        this.name = name;
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
 
-    public HashMap<String, String> createEqu(Long a, Long b, Long c) throws ArithmeticException{
-        Long discr = (long) ((Math.pow(b,2))-4*(a*c));
+
+    public  HashMap<String,String> quadro(Integer a,Integer b,Integer c){
         HashMap<String,String> resultMap = new HashMap<>();
-        if(discr>0){
-            Long x1 =(long) (-b+Math.sqrt(discr))/2*a;
-            Long x2 = (long)(-b-Math.sqrt(discr))/2*a;
-            resultMap.put("x1",x1.toString());
-            resultMap.put("x2",x2.toString());
-        }
-        else if(discr==0){
-            Long x = (long)(-b/2*a);
-            resultMap.put("x",x.toString());
-        }
-        else if(discr<0){
-            throw new ArithmeticException("there're no roots!");
-        }
-        return resultMap;
+        Integer discriminant = (int)Math.pow(b,2)-4*(a*c);
+        if(discriminant>0){
+            Double x1 =  (-b+Math.sqrt(discriminant)/2*a);
+            Double x2 =  (-b-Math.sqrt(discriminant)/2*a);
+            if(Math.pow(x1,2)*a+b*x1+c==0) {
+                resultMap.put("First root is: " + String.format("%.1f", x1), "Second root is: " + String.format("%.1f", x2));
+            }
+            else if(Math.pow(x2,2)*a+b*x2+c==0){
+                resultMap.put("First root is: " + String.format("%.1f", x1), "Second root is: " + String.format("%.1f", x2));
+            }
+            else  throw  new ArithmeticException("Not solved, cuz instance < 0");
 
+        }
+        else if(discriminant==0){
+            Double x = (double) (-b/2*a);
+            if(Math.pow(x,2)*a+b*x+c==0) {
+                resultMap.put("Only one root! ",String.format("%.1f", x));
+            }
+            else throw  new ArithmeticException("Not solved, cuz instance !=0");
+
+        }
+        else throw  new ArithmeticException("Not solved");
+        return resultMap;
     }
 }
+
+
