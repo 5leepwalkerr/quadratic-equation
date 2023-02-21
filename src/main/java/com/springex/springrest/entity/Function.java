@@ -20,15 +20,10 @@ public class Function {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String userName;
-    Integer a;
-    Integer b;
-    Integer c;
-    public Function(String userName,Integer a,Integer b,Integer c){
-        this.userName = userName;
-        this.a = a;
-        this.b = b;
-        this.c = c;
-    }
+    Double a;
+    Double b;
+    Double c;
+
 }
 
 

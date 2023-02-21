@@ -5,8 +5,7 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.context.IContext;
 
 import java.util.HashMap;
-@Service
 public interface FunctionService {
-    HashMap<String,String> quadroFunction(Integer a,Integer b,Integer c);
+    HashMap<String,String> quadroFunction(Double a,Double b,Double c);
 
 }
