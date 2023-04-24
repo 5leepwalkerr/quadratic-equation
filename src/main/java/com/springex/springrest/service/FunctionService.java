@@ -7,5 +7,4 @@ import org.thymeleaf.context.IContext;
 import java.util.HashMap;
 public interface FunctionService {
     HashMap<String,String> quadroFunction(Double a,Double b,Double c);
-
 }
